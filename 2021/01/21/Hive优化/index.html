@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.MapReduce过程参考MapReduce是将待处理的HDFS数据块经过Map局部化执行，经过网络化Shuffle将数据块按照一定的规则（排序）进行传输，最终数据块儿进入Reduce端进行归并，最终的HDFS块儿即为输出。 ##（1）Map 文件形态：File –&gt;Block –&gt; Split –&gt; partition    Map个数取决于Split个数； Reduce个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive优化">
+<meta property="og:url" content="http://example.com/2021/01/21/Hive%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="Kexue&#39;s Blog">
+<meta property="og:description" content="1.MapReduce过程参考MapReduce是将待处理的HDFS数据块经过Map局部化执行，经过网络化Shuffle将数据块按照一定的规则（排序）进行传输，最终数据块儿进入Reduce端进行归并，最终的HDFS块儿即为输出。 ##（1）Map 文件形态：File –&gt;Block –&gt; Split –&gt; partition    Map个数取决于Split个数； Reduce个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png">
+<meta property="article:published_time" content="2021-01-21T02:16:30.000Z">
+<meta property="article:modified_time" content="2021-01-22T09:52:51.100Z">
+<meta property="article:author" content="Li Kexue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png">
+
+<link rel="canonical" href="http://example.com/2021/01/21/Hive%E4%BC%98%E5%8C%96/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hive优化 | Kexue's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Kexue's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">subtitle</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/Hive%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Kexue">
+      <meta itemprop="description" content="description">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kexue's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hive优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-21 10:16:30" itemprop="dateCreated datePublished" datetime="2021-01-21T10:16:30+08:00">2021-01-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-22 17:52:51" itemprop="dateModified" datetime="2021-01-22T17:52:51+08:00">2021-01-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-MapReduce过程参考"><a href="#1-MapReduce过程参考" class="headerlink" title="1.MapReduce过程参考"></a>1.MapReduce过程<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yx-zhang/p/9572221.html">参考</a></h1><p>MapReduce是将待处理的HDFS数据块经过Map局部化执行，经过网络化Shuffle将数据块按照一定的规则（排序）进行传输，最终数据块儿进入Reduce端进行归并，最终的HDFS块儿即为输出。</p>
+<p>##（1）Map</p>
+<p>文件形态：File –&gt;Block –&gt; Split –&gt; partition  </p>
+<ul>
+<li>Map个数取决于Split个数；</li>
+<li>Reduce个数取决于Paritions个数；</li>
+<li>Shuffle即分布式排序，而排序操作以k-v形式进行<a href="mei%E5%9B%A2">sql to mr</a> </li>
+</ul>
+<hr>
+<ol>
+<li>Collect阶段将数据放进环形缓冲区，缓冲区分为数据区和索引区。</li>
+<li>Sort阶段对在同一partition内的索引按照key排序。</li>
+<li>Spill阶段跟胡排好序的索引将数据按照顺序写到文件中。</li>
+<li>Merge阶段将Spill生成的小文件分批合并排序成一个大文件</li>
+</ol>
+<p>##（2）Reduce<br>文件状态：partition–&gt;…–&gt;partitons–&gt;block</p>
+<ol>
+<li>Copy阶段将Map端的数据分批拷贝到Reduce的缓冲区。</li>
+<li>Spill阶段将内存缓存区的数据按顺序写到文件中。</li>
+<li>Merge阶段将溢出的文件合并成一个排序的数据集。<br>在局部数据排序后，spill之前均小范围的combine优化操作，类似于spark中combineByKey操作。 </li>
+</ol>
+<p>此处缺MapReduce的一张示例图，搞好图床后在补<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea1eb11db63f">图床</a><br><a target="_blank" rel="noopener" href="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png">MR过程</a><br><img src="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png" alt="MR过程"></p>
+<p>比如wordcount：<br>map阶段将文档分词，并将每个单词转换成（key，1）操作，然后sort-&gt;spill-&gt;merge;<br> Reduce阶段copy相同单词至同一partition，逐步规约spill，merge成block输出。<br>#2.Hive优化概览</p>
+<p>#3.Shuffle优化</p>
+<p>#4.调整Map数和Reduce个数<br>##（1）Map个数优化<br>由于Map是按照split对文件的block进行处理（文件形态：File –&gt;Block –&gt; Split –&gt; partition），文件的block数直接决定了Mapper个数：  </p>
+<ol>
+<li>关闭Map结束文件合并和MR文件合并<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET hive.merge.mapfiles&#x3D;false                               &#x2F;&#x2F;开启Map-only任务结束后的小文件合并</span><br><span class="line">SET hive.merge.mapredfiles&#x3D;false                          &#x2F;&#x2F;开启Map-Reduce任务结束后的小文件合并（默认false）</span><br><span class="line">SET hive.merge.size.per.task&#x3D;256000000              &#x2F;&#x2F;控制每个任务合并小文件后的文件大小（默认256M）</span><br><span class="line">SET hive.merge.smallfiles.avgsize&#x3D;150000000      &#x2F;&#x2F;告诉hadoop什么样的文件属于小文件（默认16M）</span><br></pre></td></tr></table></figure></li>
+<li>设置Reduce个数，并且随机打散文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set mapreduce.job.reduces&#x3D;25;</span><br><span class="line">create table...</span><br><span class="line">distribute by rand(123);</span><br></pre></td></tr></table></figure></li>
+<li>Split切分和文件类调整<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET mapreduce.input.fileinputformat.split.maxsize&#x3D;256000000;                    &#x2F;&#x2F;每个split最大值</span><br><span class="line">SET mapreduce.input.fileinputformat.split.minsize.per.node&#x3D;256000000;     &#x2F;&#x2F;一个节点上split的最小值 ，多个节点文件是否需要合并</span><br><span class="line">SET mapreduce.input.fileinputformat.split.minsize.per.rack&#x3D;256000000;       &#x2F;&#x2F;一个交换机下split的最小值，多个交换机文件是否需要合并</span><br><span class="line">SET hive.input.format&#x3D;org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;   &#x2F;&#x2F;执行Map前进行小文件合并</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>当然除了block的个数，其他因素比如文件是否<em><strong>压缩</strong></em>，压缩的后的文件是否支持<em><strong>切分</strong></em>，比如文件默认的inputfort格式，不同实现类的<em><strong>split算法</strong></em>也不同，那么map的个数调优方式也不同。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26442553/article/details/99438121">参考</a>已有详细地说明，以下结合自己的理解和实战多参考进行归纳。</p>
+<p>如果hive处理的文件是压缩模式，且压缩模式不支持文件切分，那么这个时候我们只能通过控制参数来减少map个数，而不能通过配置参数来增加map个数。</p>
+<p>所以如果对于Hive调优，想通过控制map个数进行调优，首先确定集群是否启动了压缩，且压缩的算法是否直接文件切分，然后再确定集群配置的默认的hive.input.format是什么实现类，不同实现类对于split的算法不同，当然控制map的参数也不同</p>
+<p>#5.常见Hive参数设置</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/26/Hi/" rel="prev" title="Hi,陈大米">
+      <i class="fa fa-chevron-left"></i> Hi,陈大米
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/22/SQL%E8%BD%AC%E5%8C%96%E4%B8%BApandas/" rel="next" title="SQL转化为pandas">
+      SQL转化为pandas <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-MapReduce%E8%BF%87%E7%A8%8B%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">1.MapReduce过程参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Li Kexue</p>
+  <div class="site-description" itemprop="description">description</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Kexue</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

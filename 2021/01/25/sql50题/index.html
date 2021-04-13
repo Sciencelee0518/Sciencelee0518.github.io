@@ -20,30 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kexue&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="很早之前就看到过这份SQL50题，一直没有时间刷，最近刚好有时间，遂用HQL过了一遍；看起来18题之后的题目难度与前18题趋同，故只刷到18题，记之。   Hive建表语句123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051--学生表  drop table if">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql50题">
+<meta property="og:url" content="http://example.com/2021/01/25/sql50%E9%A2%98/index.html">
 <meta property="og:site_name" content="Kexue&#39;s Blog">
-<meta property="og:description" content="description">
+<meta property="og:description" content="很早之前就看到过这份SQL50题，一直没有时间刷，最近刚好有时间，遂用HQL过了一遍；看起来18题之后的题目难度与前18题趋同，故只刷到18题，记之。   Hive建表语句123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051--学生表  drop table if">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-25T06:36:38.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:26:30.843Z">
 <meta property="article:author" content="Li Kexue">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/01/25/sql50%E9%A2%98/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Kexue's Blog</title>
+  <title>sql50题 | Kexue's Blog</title>
   
 
 
@@ -142,213 +144,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/24/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">idea常用快捷键</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-24 16:11:28" itemprop="dateCreated datePublished" datetime="2021-02-24T16:11:28+08:00">2021-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 11:15:42" itemprop="dateModified" datetime="2021-02-25T11:15:42+08:00">2021-02-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>有感于idea快捷键可以在大幅提高编码效率的前提下，可以保证代码书写的准确性，现将亲测有效的idea快捷功能速记如下，以备遗忘：</p>
-<p>查看类或接口的继承关系：</p>
-<p>ctrl + h</p>
-<p>Ctrl + Q    Quick documentation lookup    展示某个类或者方法的 API 说明文档<br>Ctrl + mouse    over code Brief Info    跳进到某个类或者方法源代码中进行查看。（常用）<br>Alt + Insert<br>自动生成某个类的 Getters, Setters, Constructors, hashCode/equals, toString 等代码。（常用）<br>Ctrl + O    Override methods    展示该类中所有覆盖或者实现的方法列表，注意这里是字母小写的 O！<br>Ctrl + Alt + T 示例（生成具有环绕性质的代码）<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903566302248974#heading-0">https://juejin.cn/post/6844903566302248974#heading-0</a></p>
-<p>connect方法：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1382866">https://cloud.tencent.com/developer/article/1382866</a></p>
-<p>windows api<br>滚动窗口<br>滑动窗口<br>会话窗口</p>
-<p>Window Assigner：用来决定某个元素被分配到哪个/哪些窗口中去。<br>Trigger：触发器。决定了一个窗口何时能够被计算或清除，每个窗口都会拥有一个自己的Trigger。<br>Evictor：可以译为“驱逐者”。在Trigger触发之后，在窗口被处理之前，Evictor（如果有Evictor的话）会用来剔除窗口中不需要的元素，相当于一个filter。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-23 17:14:35 / Modified: 17:45:38" itemprop="dateCreated datePublished" datetime="2021-02-23T17:14:35+08:00">2021-02-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>匹配内容（占用一个实体字符位）<br>.    匹配除换行符以外的任意字符<br>\w    匹配字母或数字或下划线或汉字<br>\s    匹配任意的空白符<br>\d    匹配数字</p>
-<p>匹配位置<br>\b    匹配单词的开始或结束（不能匹配行）<br>^    匹配字符串的开始<br>$    匹配字符串的结束</p>
-<p>匹配重复</p>
-<ul>
-<li>   重复零次或更多次</li>
-</ul>
-<ul>
-<li>   重复一次或更多次<br>?    重复零次或一次<br>{n}    重复n次<br>{n,}    重复n次或更多次<br>{n,m}    重复n到m次</li>
-</ul>
-<p>匹配逻辑<br>（） 分组<br>|  分支</p>
-<p>表3.常用的反义代码<br>代码/语法    说明<br>\W    匹配任意不是字母，数字，下划线，汉字的字符<br>\S    匹配任意不是空白符的字符<br>\D    匹配任意非数字的字符<br>\B    匹配不是单词开头或结束的位置<br>[^x]    匹配除了x以外的任意字符<br>[^aeiou]    匹配除了aeiou这几个字母以外的任意字符</p>
-<p>括号<br>大括号以匹配范围<br>中括号以精准匹配，括号里只算一次<br>小括号以分组（匹配ip：((2[0-4]\d|25[0-5]|[01]?\d\d?).){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/22/2021%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/22/2021%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="post-title-link" itemprop="url">2021算法学习路线</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-22 14:22:18 / Modified: 14:26:58" itemprop="dateCreated datePublished" datetime="2021-02-22T14:22:18+08:00">2021-02-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>不具体到具体某个应用，仍然是框架式的进行学习：</p>
-<ul>
-<li>Tensorflow类的框架学习</li>
-<li>Xgboost</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -364,10 +163,9 @@
       <meta itemprop="name" content="Kexue's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/25/sql50%E9%A2%98/" class="post-title-link" itemprop="url">sql50题</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          sql50题
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -391,7 +189,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>很早之前就看到过这份<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/476b52ee4f1b">SQL50题</a>，一直没有时间刷，最近刚好有时间，遂用HQL过了一遍；看起来18题之后的题目难度与前18题趋同，故只刷到18题，记之。  </p>
+        <p>很早之前就看到过这份<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/476b52ee4f1b">SQL50题</a>，一直没有时间刷，最近刚好有时间，遂用HQL过了一遍；看起来18题之后的题目难度与前18题趋同，故只刷到18题，记之。  </p>
 <h1 id="Hive建表语句"><a href="#Hive建表语句" class="headerlink" title="Hive建表语句"></a>Hive建表语句</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">--学生表  </span><br><span class="line">drop table if exists hdp_anjuke_dw_stage.lkx_student;  </span><br><span class="line">create table hdp_anjuke_dw_stage.lkx_student(sid string,sname string,sage string,ssex string);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;01&#39; , &#39;赵雷&#39; , &#39;1990-01-01&#39; , &#39;男&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;02&#39; , &#39;钱电&#39; , &#39;1990-12-21&#39; , &#39;男&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;03&#39; , &#39;孙风&#39; , &#39;1990-05-20&#39; , &#39;男&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;04&#39; , &#39;李云&#39; , &#39;1990-08-06&#39; , &#39;男&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;05&#39; , &#39;周梅&#39; , &#39;1991-12-01&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;06&#39; , &#39;吴兰&#39; , &#39;1992-03-01&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;07&#39; , &#39;郑竹&#39; , &#39;1989-07-01&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;09&#39; , &#39;张三&#39; , &#39;2017-12-20&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;10&#39; , &#39;李四&#39; , &#39;2017-12-25&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;11&#39; , &#39;李四&#39; , &#39;2017-12-30&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;12&#39; , &#39;赵六&#39; , &#39;2017-01-01&#39; , &#39;女&#39;);  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_student values(&#39;13&#39; , &#39;孙七&#39; , &#39;2018-01-01&#39; , &#39;女&#39;);  </span><br><span class="line"></span><br><span class="line">--课程表  </span><br><span class="line">drop table if exists hdp_anjuke_dw_stage.lkx_course;  </span><br><span class="line">create table hdp_anjuke_dw_stage.lkx_course(cid string,cname string,tid string)   ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_course values(&#39;01&#39; , &#39;语文&#39; , &#39;02&#39;)           ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_course values(&#39;02&#39; , &#39;数学&#39; , &#39;01&#39;)           ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_course values(&#39;03&#39; , &#39;英语&#39; , &#39;03&#39;)           ;  </span><br><span class="line"></span><br><span class="line">--教师表  </span><br><span class="line">drop table if exists hdp_anjuke_dw_stage.lkx_teacher;  </span><br><span class="line">create table hdp_anjuke_dw_stage.lkx_teacher(tid string,tname string)  ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_teacher values(&#39;01&#39; , &#39;张三&#39;)      ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_teacher values(&#39;02&#39; , &#39;李四&#39;)      ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_teacher values(&#39;03&#39; , &#39;王五&#39;)      ;  </span><br><span class="line"></span><br><span class="line">--成绩表  </span><br><span class="line">drop table if exists hdp_anjuke_dw_stage.lkx_sc;  </span><br><span class="line">create table hdp_anjuke_dw_stage.lkx_sc(sid string,cid string,score  int)       ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;01&#39; , &#39;01&#39; , 80)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;01&#39; , &#39;02&#39; , 90)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;01&#39; , &#39;03&#39; , 99)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;02&#39; , &#39;01&#39; , 70)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;02&#39; , &#39;02&#39; , 60)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;02&#39; , &#39;03&#39; , 80)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;03&#39; , &#39;01&#39; , 80)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;03&#39; , &#39;02&#39; , 80)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;03&#39; , &#39;03&#39; , 80)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;04&#39; , &#39;01&#39; , 50)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;04&#39; , &#39;02&#39; , 30)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;04&#39; , &#39;03&#39; , 20)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;05&#39; , &#39;01&#39; , 76)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;05&#39; , &#39;02&#39; , 87)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;06&#39; , &#39;01&#39; , 31)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;06&#39; , &#39;03&#39; , 34)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;07&#39; , &#39;02&#39; , 89)                                        ;  </span><br><span class="line">insert into hdp_anjuke_dw_stage.lkx_sc values(&#39;07&#39; , &#39;03&#39; , 98)                                        ;  </span><br></pre></td></tr></table></figure>
 
 <p>2.查询平均成绩大于等于 60 分的同学的学生编号和学生姓名和平均成绩  </p>
@@ -431,366 +229,33 @@
 
 <p>18.查询各科成绩前三名的记录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select sid,cid,score</span><br><span class="line">from (</span><br><span class="line">	select sid,cid,score</span><br><span class="line">	,row_number() over(partition by cid order by score desc) as row_number</span><br><span class="line">	from hdp_anjuke_dw_stage.lkx_sc </span><br><span class="line">	;</span><br><span class="line">)a </span><br><span class="line">where row_number&lt;&#x3D;3</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/%E5%AE%9E%E7%94%A8Hive%E5%8F%82%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/22/%E5%AE%9E%E7%94%A8Hive%E5%8F%82%E6%95%B0%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">实用Hive参数汇总</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-22 15:26:39 / Modified: 16:01:17" itemprop="dateCreated datePublished" datetime="2021-01-22T15:26:39+08:00">2021-01-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> set mapred.max.split.size;</p>
-<p>set mapred.min.split.size</p>
-<p>set dfs.block.size</p>
-<p>hive&gt;  set io.compression.codecs; –配置了哪些压缩算法</p>
-<p>hive&gt; set hive.exec.compress.output;</p>
-<p>hive&gt; set mapreduce.output.fileoutputformat.compress.codec;  –使用的压缩算法</p>
-<p>set hive.input.format; –hive0.5开始的默认值，这个值会影响map个数的控制</p>
-<p>hadoop fs -du -s -h命令查看文件的存储大小结果</p>
-<p>set hive.auto.convert.join=true</p>
-<p>set hive.mapred.mode=nonstrict;</p>
-<p>set hive.exec.autorouter.assignEngine=Hive;</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/22/%E5%AE%9E%E7%94%A8Hive%E5%8F%82%E6%95%B0%E6%B1%87%E6%80%BB/" rel="prev" title="实用Hive参数汇总">
+      <i class="fa fa-chevron-left"></i> 实用Hive参数汇总
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/22/2021%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" rel="next" title="2021算法学习路线">
+      2021算法学习路线 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/%E5%AE%9E%E7%94%A8git%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/22/%E5%AE%9E%E7%94%A8git%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">实用git命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-22 15:23:22 / Modified: 15:44:37" itemprop="dateCreated datePublished" datetime="2021-01-22T15:23:22+08:00">2021-01-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>#git 上传本地文件到服务器<br>git pull<br>git add filename<br>git commit -m ‘comments’<br>git push origin master  </p>
-<p>#本地修改并保存后，又不想修改了<br>git reset –hard HEAD</p>
-<p>#删除文件<br>rm -f filename</p>
-<p>#查看git状态<br>git status</p>
-<p>#检查<br>git checkout </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/SQL%E8%BD%AC%E5%8C%96%E4%B8%BApandas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/22/SQL%E8%BD%AC%E5%8C%96%E4%B8%BApandas/" class="post-title-link" itemprop="url">SQL转化为pandas</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-22 14:55:18" itemprop="dateCreated datePublished" datetime="2021-01-22T14:55:18+08:00">2021-01-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/Hive%E4%BC%98%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/21/Hive%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">Hive优化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-21 10:16:30" itemprop="dateCreated datePublished" datetime="2021-01-21T10:16:30+08:00">2021-01-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-22 17:52:51" itemprop="dateModified" datetime="2021-01-22T17:52:51+08:00">2021-01-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-MapReduce过程参考"><a href="#1-MapReduce过程参考" class="headerlink" title="1.MapReduce过程参考"></a>1.MapReduce过程<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yx-zhang/p/9572221.html">参考</a></h1><p>MapReduce是将待处理的HDFS数据块经过Map局部化执行，经过网络化Shuffle将数据块按照一定的规则（排序）进行传输，最终数据块儿进入Reduce端进行归并，最终的HDFS块儿即为输出。</p>
-<p>##（1）Map</p>
-<p>文件形态：File –&gt;Block –&gt; Split –&gt; partition  </p>
-<ul>
-<li>Map个数取决于Split个数；</li>
-<li>Reduce个数取决于Paritions个数；</li>
-<li>Shuffle即分布式排序，而排序操作以k-v形式进行<a href="mei%E5%9B%A2">sql to mr</a> </li>
-</ul>
-<hr>
-<ol>
-<li>Collect阶段将数据放进环形缓冲区，缓冲区分为数据区和索引区。</li>
-<li>Sort阶段对在同一partition内的索引按照key排序。</li>
-<li>Spill阶段跟胡排好序的索引将数据按照顺序写到文件中。</li>
-<li>Merge阶段将Spill生成的小文件分批合并排序成一个大文件</li>
-</ol>
-<p>##（2）Reduce<br>文件状态：partition–&gt;…–&gt;partitons–&gt;block</p>
-<ol>
-<li>Copy阶段将Map端的数据分批拷贝到Reduce的缓冲区。</li>
-<li>Spill阶段将内存缓存区的数据按顺序写到文件中。</li>
-<li>Merge阶段将溢出的文件合并成一个排序的数据集。<br>在局部数据排序后，spill之前均小范围的combine优化操作，类似于spark中combineByKey操作。 </li>
-</ol>
-<p>此处缺MapReduce的一张示例图，搞好图床后在补<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea1eb11db63f">图床</a><br><a target="_blank" rel="noopener" href="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png">MR过程</a><br><img src="https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png" alt="MR过程"></p>
-<p>比如wordcount：<br>map阶段将文档分词，并将每个单词转换成（key，1）操作，然后sort-&gt;spill-&gt;merge;<br> Reduce阶段copy相同单词至同一partition，逐步规约spill，merge成block输出。<br>#2.Hive优化概览</p>
-<p>#3.Shuffle优化</p>
-<p>#4.调整Map数和Reduce个数<br>##（1）Map个数优化<br>由于Map是按照split对文件的block进行处理（文件形态：File –&gt;Block –&gt; Split –&gt; partition），文件的block数直接决定了Mapper个数：  </p>
-<ol>
-<li>关闭Map结束文件合并和MR文件合并<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET hive.merge.mapfiles&#x3D;false                               &#x2F;&#x2F;开启Map-only任务结束后的小文件合并</span><br><span class="line">SET hive.merge.mapredfiles&#x3D;false                          &#x2F;&#x2F;开启Map-Reduce任务结束后的小文件合并（默认false）</span><br><span class="line">SET hive.merge.size.per.task&#x3D;256000000              &#x2F;&#x2F;控制每个任务合并小文件后的文件大小（默认256M）</span><br><span class="line">SET hive.merge.smallfiles.avgsize&#x3D;150000000      &#x2F;&#x2F;告诉hadoop什么样的文件属于小文件（默认16M）</span><br></pre></td></tr></table></figure></li>
-<li>设置Reduce个数，并且随机打散文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set mapreduce.job.reduces&#x3D;25;</span><br><span class="line">create table...</span><br><span class="line">distribute by rand(123);</span><br></pre></td></tr></table></figure></li>
-<li>Split切分和文件类调整<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET mapreduce.input.fileinputformat.split.maxsize&#x3D;256000000;                    &#x2F;&#x2F;每个split最大值</span><br><span class="line">SET mapreduce.input.fileinputformat.split.minsize.per.node&#x3D;256000000;     &#x2F;&#x2F;一个节点上split的最小值 ，多个节点文件是否需要合并</span><br><span class="line">SET mapreduce.input.fileinputformat.split.minsize.per.rack&#x3D;256000000;       &#x2F;&#x2F;一个交换机下split的最小值，多个交换机文件是否需要合并</span><br><span class="line">SET hive.input.format&#x3D;org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;   &#x2F;&#x2F;执行Map前进行小文件合并</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>当然除了block的个数，其他因素比如文件是否<em><strong>压缩</strong></em>，压缩的后的文件是否支持<em><strong>切分</strong></em>，比如文件默认的inputfort格式，不同实现类的<em><strong>split算法</strong></em>也不同，那么map的个数调优方式也不同。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26442553/article/details/99438121">参考</a>已有详细地说明，以下结合自己的理解和实战多参考进行归纳。</p>
-<p>如果hive处理的文件是压缩模式，且压缩模式不支持文件切分，那么这个时候我们只能通过控制参数来减少map个数，而不能通过配置参数来增加map个数。</p>
-<p>所以如果对于Hive调优，想通过控制map个数进行调优，首先确定集群是否启动了压缩，且压缩的算法是否直接文件切分，然后再确定集群配置的默认的hive.input.format是什么实现类，不同实现类对于split的算法不同，当然控制map的参数也不同</p>
-<p>#5.常见Hive参数设置</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/26/Hi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Kexue">
-      <meta itemprop="description" content="description">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kexue's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/26/Hi/" class="post-title-link" itemprop="url">Hi,陈大米</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-26 19:50:00 / Modified: 19:52:01" itemprop="dateCreated datePublished" datetime="2020-11-26T19:50:00+08:00">2020-11-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -843,6 +308,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.</span> <span class="nav-text">Hive建表语句</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
