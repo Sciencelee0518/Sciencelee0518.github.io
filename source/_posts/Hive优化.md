@@ -31,7 +31,8 @@ MapReduce是将待处理的HDFS数据块经过Map局部化执行，经过网络�
 
 
 此处缺MapReduce的一张示例图，搞好图床后在补[图床](https://www.jianshu.com/p/ea1eb11db63f)
-
+[MR过程](https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png)
+![MR过程](https://github.com/Sciencelee0518/Sciencelee0518.github.io/blob/source/source/picture/MapReduce%E8%BF%87%E7%A8%8B.png)
 
 比如wordcount：
 map阶段将文档分词，并将每个单词转换成（key，1）操作，然后sort->spill->merge;
